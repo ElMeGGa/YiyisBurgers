@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiyis Burguers Y Mas - Restaurante</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Lora, Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Aplicamos las fuentes personalizadas */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1 { /* Aplicamos Poppins al H1 según la solicitud */
+            font-family: 'Poppins', sans-serif;
+        }
+        h2, h3, .font-lora {
+            font-family: 'Lora', serif;
+        }
+        /* Eliminado: scroll-behavior: smooth; ya que lo manejaremos con JS para mayor fiabilidad */
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Encabezado -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Contenedor para el logo y el título -->
+            <div class="flex items-center">
+                <!-- Logo del restaurante - Tamaño ajustado para resaltar -->
+                <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750317831/ChatGPT_Image_19_jun_2025_01_17_07_a.m._hwefff.png" alt="Logo Yiyis Burguers" class="w-16 h-16 mr-3">
+                <h1 class="text-3xl font-bold text-orange-600">Yiyis Burguers Y Mas</h1>
+            </div>
+            <nav>
+                <a href="#ordenar" class="text-gray-600 hover:text-orange-600 px-3 py-2">Ordenar</a>
+                <a href="#promo-menu" class="text-gray-600 hover:text-orange-600 px-3 py-2">Promos</a>
+                <a href="#menu" class="text-gray-600 hover:text-orange-600 px-3 py-2">Menú</a>
+                <a href="#contacto" class="text-gray-600 hover:text-orange-600 px-3 py-2">Contacto</a>
+                <!-- Nuevo acceso directo a la sección de contacto -->
+                <a href="#contacto" class="text-gray-600 hover:text-orange-600 px-3 py-2">Visítanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal (Hero Section) -->
+    <section class="relative h-96 bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750317832/img_748cd48bdf127dfb0fdce2ef03a1b0c1_lkekqn.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
+            <div class="text-center text-white p-4">
+                <h2 class="text-5xl font-bold font-lora mb-4">Las mejores hamburguesas de la ciudad</h2>
+                <p class="text-xl mb-8">Preparadas al momento con ingredientes de la más alta calidad.</p>
+                <!-- Botón de Llamada a la Acción - Enlaza a la sección "ordenar" -->
+                <a href="#ordenar" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 transform hover:scale-105">
+                    ¡Ordena Ahora!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Menú Promocional -->
+    <section id="promo-menu" class="py-12 bg-orange-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center font-lora mb-10 text-orange-700">Menú Promocional de la Semana</h2>
+            <div class="flex justify-center">
+                <!-- Platillo Promocional -->
+                <div class="bg-white rounded-lg shadow-2xl overflow-hidden max-w-sm transform hover:scale-105 transition-transform">
+                    <img src="https://placehold.co/600x400/fb923c/ffffff?text=Combo+Pareja" alt="Imagen del platillo promocional" class="w-full h-48 object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo Pareja</h3>
+                        <p class="text-gray-600 mb-4">2 Hamburguesas Clásicas + Papas Grandes + 2 Refrescos.</p>
+                        <p class="text-3xl font-bold text-orange-600">$250.00 MXN</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Menú General con Categorías -->
+    <section id="menu" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center font-lora mb-10">Nuestro Menú</h2>
+            
+            <!-- Categoría: Combos -->
+            <h3 class="text-3xl font-bold font-lora text-center mb-8 text-orange-600">Combos</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                
+                <!-- Combo-Texana Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Texana" alt="Imagen de Combo Texana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Texana Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Texana " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger..."</p>
+                        <p class="text-2xl font-bold text-orange-600">$233.00 MXN</p>
+                    </div>
+                </div>
+                
+                <!-- Combo-Regia Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Regia" alt="Imagen de Combo Regia" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Regia Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Regia " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger."</p>
+                        <p class="text-2xl font-bold text-orange-600">$233.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Especial Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Especial" alt="Imagen de Combo Especial" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Especial Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Especial " + ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger ... *</p>
+                        <p class="text-2xl font-bold text-orange-600">$183.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Yiyi's Chicken Burge Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Chicken" alt="Imagen de Combo Chicken Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Yiyi's Chicken Burge Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Chicken Burgers*1 + Botana a Escoger . * 1 + ELIGE TU REFRESCO DE 600 ML</p>
+                        <p class="text-2xl font-bold text-orange-600">$183.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Sencillo Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Sencillo" alt="Imagen de Combo Sencillo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Sencillo Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Sencilla*1 + Botana Barcel a Escoger*1 + ELIGE TU REFRESCO DE 600 ML*1</p>
+                        <p class="text-2xl font-bold text-orange-600">$170.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Hawaiana Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Hawaiana" alt="Imagen de Combo Hawaiana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Hawaiana Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">ELIGE TU REFRESCO DE 600 ML*1 + Yiyi's Burguers Hawaiana1 + Botana a Escoger..*1</p>
+                        <p class="text-2xl font-bold text-orange-600">$223.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Doricrunch Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Doricrunch" alt="Imagen de Combo Doricrunch" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Doricrunch Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Doricrunch ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger * 1</p>
+                        <p class="text-2xl font-bold text-orange-600">$293.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Bbq Papas y Refresco 600 Ml -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+BBQ" alt="Imagen de Combo BBQ" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Bbq Papas y Refresco 600 Ml</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers Bbq o Salsas a Escoger " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger.1</p>
+                        <p class="text-2xl font-bold text-orange-600">$203.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo-Yiyi's Burguers Personalizado -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Personalizado" alt="Imagen de Combo Personalizado" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo-Yiyi's Burguers Personalizado</h3>
+                        <p class="text-gray-600 mb-4">Yiyi's Burguers a Tu Gusto.."1 + ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger</p>
+                        <p class="text-2xl font-bold text-orange-600">$170.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Es Mejor Juntos -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Es+Mejor+Juntos" alt="Imagen de Es Mejor Juntos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Es Mejor Juntos</h3>
+                        <p class="text-gray-600 mb-4">Coca Cola o Sabores Lata 355 o 473 Ml*1 + Hamburguesa Sencilla "</p>
+                        <p class="text-2xl font-bold text-orange-600">$125.00 MXN</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Categoría: Yiyi's Kids -->
+            <h3 class="text-3xl font-bold font-lora text-center mb-8 text-orange-600">Yiyi's Kids</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Yiyi's Kids Palomitas -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Palomitas" alt="Imagen de Yiyi's Kids Palomitas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Yiyi's Kids Palomitas</h3>
+                        <p class="text-gray-600 mb-4">125g de palomitas de pollo, catsup.</p>
+                        <p class="text-2xl font-bold text-orange-600">$59.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Yiyi's Kids Nuggets 6 Pzs -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Nuggets" alt="Imagen de Yiyi's Kids Nuggets" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Yiyi's Kids Nuggets 6 Pzs</h3>
+                        <p class="text-gray-600 mb-4">6 pzs de nuggets de pollo, catsup.</p>
+                        <p class="text-2xl font-bold text-orange-600">$59.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo Palomitas Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Palomitas" alt="Imagen de Combo Palomitas Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo Palomitas Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">Papas Fritas Naturales 220 g*1 + Yiyi's Kids Palomitas + Elige Tu Bebida Kids "</p>
+                        <p class="text-2xl font-bold text-orange-600">$116.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo Hot Dog Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Hot+Dog" alt="Imagen de Combo Hot Dog Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo Hot Dog Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">Hot Dog Yiyi's Kids*1 + Elige Tu Bebida Kids*1</p>
+                        <p class="text-2xl font-bold text-orange-600">$78.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Hot Dog Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Hot+Dog" alt="Imagen de Hot Dog Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Hot Dog Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">hot dog , salchicha p/hot dog , mayonesa , mostaza , catsup</p>
+                        <p class="text-2xl font-bold text-orange-600">$59.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo Nuggets Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Nuggets" alt="Imagen de Combo Nuggets Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo Nuggets Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">Papas Fritas Naturales 220 g*1 + Yiyi's Kids Nuggets 6 Pzs*1 + Elige Tu Bebida Kids*1</p>
+                        <p class="text-2xl font-bold text-orange-600">$116.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Hamburguesa Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Hamburguesa" alt="Imagen de Hamburguesa Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Hamburguesa Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">hamburguesa con carne de res 80g , queso tipo americano , winy , mayonesa , mostaza , catsup</p>
+                        <p class="text-2xl font-bold text-orange-600">$76.00 MXN</p>
+                    </div>
+                </div>
+
+                <!-- Combo Hamburguesa Yiyi's Kids -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Hamburguesa" alt="Imagen de Combo Hamburguesa Yiyi's Kids" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-lora mb-2">Combo Hamburguesa Yiyi's Kids</h3>
+                        <p class="text-gray-600 mb-4">Hamburguesa Yiyi's Kids*1 Elige Tu Bebida Kids*1</p>
+                        <p class="text-2xl font-bold text-orange-600">$95.00 MXN</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Ordenar Ahora -->
+    <section id="ordenar" class="py-12 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold font-lora mb-8">¡Pide Ahora!</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-10">Descarga tu app de delivery favorita o envíanos un WhatsApp para hacer tu pedido.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Banner Rappi -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="flex items-center justify-center p-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg w-full">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/rappilogo_yxnazg.jpg" class="w-12 h-12 mr-3 rounded-lg" alt="Logo de Rappi">
+                        <span>Disponible en Rappi</span>
+                    </div>
+                    <div class="flex gap-2 w-full">
+                        <!-- Botón App Store Rappi -->
+                        <a href="https://apps.apple.com/co/app/rappi-pide-todo-en-minutos/id984044296" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://www.apple.com/v/app-store/b/images/overview/icon_appstore__ev0z770zyxoy_large.png" class="w-8 h-8 mr-2" alt="Logo de App Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde iOS</span>
+                            </div>
+                        </a>
+                        <!-- Botón Play Store Rappi -->
+                        <a href="#" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://fonts.gstatic.com/s/i/productlogos/play_prism/v8/web-64dp/logo_play_prism_color_1x_web_64dp.png" class="w-8 h-8 mr-2" alt="Logo de Play Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde Android</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Banner Uber Eats -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="flex items-center justify-center p-4 bg-[#00BE88] text-white font-bold rounded-lg shadow-lg w-full">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316426/ubereatsloco_j6jmlj.jpg" class="w-12 h-12 mr-3 rounded-lg" alt="Logo de Uber Eats">
+                        <span>Disponible en Uber Eats</span>
+                    </div>
+                     <div class="flex gap-2 w-full">
+                        <!-- Botón App Store Uber Eats -->
+                        <a href="#" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://www.apple.com/v/app-store/b/images/overview/icon_appstore__ev0z770zyxoy_large.png" class="w-8 h-8 mr-2" alt="Logo de App Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde iOS</span>
+                            </div>
+                        </a>
+                        <!-- Botón Play Store Uber Eats -->
+                        <a href="#" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://fonts.gstatic.com/s/i/productlogos/play_prism/v8/web-64dp/logo_play_prism_color_1x_web_64dp.png" class="w-8 h-8 mr-2" alt="Logo de Play Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde Android</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Banner Didi Food -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="flex items-center justify-center p-4 bg-[#E8740B] text-white font-bold rounded-lg shadow-lg w-full">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/didifoodlogo_nb9rqo.jpg" class="w-12 h-12 mr-3 rounded-lg" alt="Logo de DiDi Food">
+                        <span>Disponible en DiDi Food</span>
+                    </div>
+                     <div class="flex gap-2 w-full">
+                        <!-- Botón App Store Didi Food -->
+                        <a href="#" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://www.apple.com/v/app-store/b/images/overview/icon_appstore__ev0z770zyxoy_large.png" class="w-8 h-8 mr-2" alt="Logo de App Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde iOS</span>
+                            </div>
+                        </a>
+                        <!-- Botón Play Store Didi Food -->
+                        <a href="#" target="_blank" class="flex items-center justify-center p-2 text-white font-semibold rounded-lg shadow bg-gray-700 hover:bg-gray-800 transition-colors w-full h-20 text-center">
+                            <img src="https://fonts.gstatic.com/s/i/productlogos/play_prism/v8/web-64dp/logo_play_prism_color_1x_web_64dp.png" class="w-8 h-8 mr-2" alt="Logo de Play Store">
+                            <div class="flex flex-col items-start leading-tight">
+                                <span class="text-xs font-normal">Descarga y pide</span>
+                                <span class="text-sm font-bold">desde Android</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Botón WhatsApp -->
+                <div class="flex flex-col items-center justify-center">
+                     <a href="https://wa.me/526562939244" target="_blank" class="flex items-center justify-center p-4 bg-green-500 text-white font-bold rounded-lg shadow-lg hover:bg-green-600 transition-transform transform hover:scale-105 w-full h-full">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" class="w-12 h-12 mr-3" alt="Logo de WhatsApp">
+                        <span>Pedir por WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto y Ubicación -->
+    <section id="contacto" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center font-lora mb-10">Visítanos y Contáctanos</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                
+                <!-- Dirección -->
+                <div class="text-center">
+                    <h3 class="text-2xl font-semibold mb-2">Dirección</h3>
+                    <p class="text-gray-600">Calle Boboli, 3765, Colonia El Mezquital</p>
+                    <p class="text-gray-600">Ciudad Juárez, Chihuahua, C.P. 32576</p>
+                </div>
+
+                <!-- Horarios -->
+                <div class="text-center">
+                    <h3 class="text-2xl font-semibold mb-2">Horarios</h3>
+                    <p class="text-gray-600"><strong>Lunes a Sábado:</strong> 12:00 PM - 10:00 PM</p>
+                    <p class="text-600"><strong>Domingo:</strong> 12:00 PM - 8:00 PM</p>
+                </div>
+
+            </div>
+            <!-- Mapa -->
+            <div class="mt-10 rounded-lg overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212.4296089408442!2d-106.40175861171302!3d31.582509987725295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e76798aa8b40ad%3A0xc435c4e6407f03e0!2sYiyi's%20Burguers%20Y%20Mas!5e0!3m2!1ses!2smx!4v1750311140030!5m2!1ses!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <div class="mt-12 max-w-lg mx-auto bg-gray-100 p-8 rounded-lg shadow-lg">
+                <h3 class="text-3xl font-bold font-lora mb-6 text-center">Envíanos un Mensaje</h3>
+                <form>
+                    <div class="mb-4">
+                        <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu Nombre" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="tu.email@ejemplo.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300">
+                            Enviar Mensaje
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Yiyis Burguers Y Mas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Obtener todos los enlaces de navegación que apuntan a IDs de sección
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const heroButton = document.querySelector('section.relative a[href^="#"]');
+
+        // Función para desplazamiento suave
+        function smoothScroll(event) {
+            event.preventDefault(); // Previene el comportamiento de salto predeterminado del ancla
+            const targetId = this.getAttribute('href'); // Obtiene el ID del destino del enlace
+            const targetElement = document.querySelector(targetId); // Encuentra el elemento de destino
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth' // Desplazamiento suave
+                });
+            }
+        }
+
+        // Añadir el event listener a los enlaces de navegación
+        navLinks.forEach(link => {
+            link.addEventListener('click', smoothScroll);
+        });
+
+        // Añadir el event listener al botón "¡Ordena Ahora!"
+        if (heroButton) {
+            heroButton.addEventListener('click', smoothScroll);
+        }
+    </script>
+</body>
+</html>
