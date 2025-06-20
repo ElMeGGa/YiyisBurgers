@@ -20,6 +20,8 @@
             --color-text-secondary: #4b5563; /* Texto secundario (enlaces nav, descripciones) - Gris medio */
             --color-bg-tertiary: #f3f4f6; /* Fondo terciario (formulario contacto) - Gris claro */
             --color-bg-promo: #fff7ed; /* Fondo sección promocional - Naranja muy claro */
+            --color-bg-footer: #f3f4f6; /* Fondo del footer en modo claro (gris claro) */
+
 
             /* Colores específicos de la marca o elementos fijos */
             --color-orange-main: #ea580c; /* Naranja principal (Botones, H1) */
@@ -46,6 +48,8 @@
             --color-text-secondary: #a0aec0; /* Texto secundario - Gris azulado claro */
             --color-bg-tertiary: #4a5568; /* Fondo terciario (igual que secondary para consistencia) */
             --color-bg-promo: #4a5568; /* Fondo sección promocional - Gris oscuro */
+            --color-bg-footer: #374151; /* Fondo del footer en modo oscuro (gris oscuro) */
+
 
             /* Ajuste de colores de marca para el modo oscuro (más claros) */
             --color-orange-main: #f6ad55;
@@ -207,6 +211,7 @@
             justify-content: space-between; /* Distribuye el espacio entre los botones */
             padding: 0.5rem; /* Pequeño padding para los botones de descarga */
             font-weight: 600; /* semi-bold para el texto de descarga */
+            color: var(--color-text-primary); /* El texto de flipper-back se adapta al tema */
         }
 
         /* Clase para activar el giro */
@@ -261,17 +266,16 @@
         }
 
         .sidebar-header {
+            /* Eliminado position: absolute para que fluya normalmente dentro del sidebar */
             padding: 1rem 1.5rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Alinea el botón de cierre a la derecha */
             align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             background-color: var(--color-bg-secondary); /* Fondo del header de la sidebar */
             box-shadow: var(--color-shadow-md);
             z-index: 1001; /* Asegura que el botón de cierre esté encima */
+            /* top: 0; left: 0; -- Eliminados para que el elemento fluya */
         }
 
         .menu-button { /* Estilo del botón de hamburguesa */
@@ -350,12 +354,12 @@
         }
 
         .submenu a {
-            padding: 0.75rem 1rem 0.75rem 2.5rem; /* Padding with indentation */
-            font-weight: normal; /* Less bold than parent links */
-            border-bottom: none; /* Submenus don't need individual bottom borders usually */
+            padding: 0.75rem 1rem 0.75rem 2.5rem; /* Padding con indentación */
+            font-weight: normal; /* Menos negrita que los enlaces padre */
+            border-bottom: none; /* Los submenús no necesitan bordes inferiores individuales */
         }
         .submenu a:hover {
-            background-color: var(--color-bg-primary); /* Lighter hover for submenus */
+            background-color: var(--color-bg-primary); /* Hover más claro para submenús */
         }
 
         /* Review card styles */
@@ -365,7 +369,7 @@
             padding: 1.5rem;
         }
         .star-rating svg {
-            color: #fcd34d; /* Yellow for stars */
+            color: #fcd34d; /* Amarillo para las estrellas */
             display: inline-block;
         }
 
