@@ -11,95 +11,86 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Definición de variables CSS para el tema */
+        /* Definición de variables CSS para el tema (modo claro por defecto) */
         :root {
-            /* Colores generales para el modo claro */
-            --color-bg-primary: #f9fafb; /* Fondo principal (body) - Gris muy claro, casi blanco */
+            /* Colores generales */
+            --color-bg-primary: #F8F8F8; /* Fondo principal (body) - Gris muy claro, suave */
             --color-text-primary: #374151; /* Texto principal - Gris oscuro */
-            --color-bg-secondary: #ffffff; /* Fondos secundarios (header, tarjetas de menú, sección ordenar) - Blanco puro */
+            --color-bg-secondary: #FBFBFB; /* Fondos secundarios (tarjetas, secciones) - Blanco cremoso sutil */
             --color-text-secondary: #4b5563; /* Texto secundario (enlaces nav, descripciones) - Gris medio */
-            --color-bg-tertiary: #f3f4f6; /* Fondo terciario (formulario contacto) - Gris claro */
-            --color-bg-promo: #fff7ed; /* Fondo sección promocional - Naranja muy claro */
-            --color-bg-footer: #f3f4f6; /* Fondo del footer en modo claro (gris claro) */
-
+            --color-bg-tertiary: #f3f4f6; /* Usado en flipper back si se desea un tono diferente (now static groups) */
+            --color-bg-footer: #F0F0F0; /* Fondo del footer (gris claro) */
+            --color-header-bg: #F0E8EB; /* Color específico para la barra de título en modo claro */
 
             /* Colores específicos de la marca o elementos fijos */
             --color-orange-main: #ea580c; /* Naranja principal (Botones, H1) */
-            --color-orange-dark: #c2410c; /* Naranja oscuro (H2 promos, hover) */
+            --color-orange-dark: #c2410c; /* Naranja oscuro (para hover si aplica) */
             --color-green-main: #22c55e; /* Verde principal (WhatsApp) */
             --color-green-dark: #16a34a; /* Verde oscuro (WhatsApp hover) */
+            
+            /* Colores para los grupos de servicio (mantienen colores originales de marca) */
+            --color-rappi-group-bg: #f97316; /* Naranja Rappi */
+            --color-uber-group-bg: #00BE88; /* Verde Uber Eats */
+            --color-didi-group-bg: #E8740B; /* Naranja DiDi Food */
+            --color-whatsapp-group-bg: #22c55e; /* Verde WhatsApp */
+
 
             /* Sombras */
             --color-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --color-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-            /* Colores para flipper (botones de apps de delivery) */
-            --color-flipper-bg-front-rappi: #f97316; /* Naranja Rappi */
-            --color-flipper-bg-front-uber: #00BE88; /* Verde Uber Eats */
-            --color-flipper-bg-front-didi: #E8740B; /* Naranja DiDi Food */
-            --color-flipper-bg-back: #4b5563; /* Fondo de la cara trasera del flipper */
         }
 
-        /* Colores para el modo oscuro */
-        body.dark-mode {
-            --color-bg-primary: #2d3748; /* Fondo principal - Gris oscuro medio */
-            --color-text-primary: #e2e8f0; /* Texto principal - Gris claro */
-            --color-bg-secondary: #4a5568; /* Fondos secundarios (más oscuros que el primary) */
-            --color-text-secondary: #a0aec0; /* Texto secundario - Gris azulado claro */
-            --color-bg-tertiary: #4a5568; /* Fondo terciario (igual que secondary para consistencia) */
-            --color-bg-promo: #4a5568; /* Fondo sección promocional - Gris oscuro */
-            --color-bg-footer: #374151; /* Fondo del footer en modo oscuro (gris oscuro) */
+        /* Modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg-primary: #1A1A1A; /* Fondo principal oscuro */
+                --color-text-primary: #E0E0E0; /* Texto principal claro */
+                --color-bg-secondary: #212121; /* Fondos secundarios oscuros */
+                --color-text-secondary: #B0B0B0; /* Texto secundario claro */
+                --color-bg-footer: #282828; /* Fondo del footer oscuro */
+                --color-header-bg: #0D0D0D; /* Barra de título muy oscura */
 
+                /* Ajustes de color para elementos específicos en modo oscuro si es necesario */
+                --color-orange-main: #ff8c00; /* Naranja ligeramente más brillante para dark mode */
+                --color-orange-dark: #e67e00; /* Naranja oscuro ajustado */
+                --color-green-main: #2ecc71; /* Verde ligeramente ajustado */
+                --color-green-dark: #27ae60; /* Verde oscuro ajustado */
+            }
 
-            /* Ajuste de colores de marca para el modo oscuro (más claros) */
-            --color-orange-main: #f6ad55;
-            --color-orange-dark: #fbd38d;
-
-            /* Sombras en modo oscuro, más sutiles */
-            --color-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --color-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-
-            /* Ajuste de colores para flipper en modo oscuro (ligeramente más apagados o adaptados) */
-            --color-flipper-bg-front-rappi: #e07216;
-            --color-flipper-bg-front-uber: #008f6d;
-            --color-flipper-bg-front-didi: #c8630a;
-            --color-flipper-bg-back: #374151; /* Mismo color que text-primary en light, funciona bien aquí */
+            /* Filtro para invertir el color del logo en modo oscuro */
+            #yiyis-logo {
+                filter: invert(100%);
+            }
         }
 
         /* Aplicación de las variables a los elementos HTML */
         body {
             background-color: var(--color-bg-primary);
             color: var(--color-text-primary);
-            transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el tema */
             font-family: 'Inter', sans-serif;
-            /* Por defecto, sin padding para mobile y se ajusta para desktop */
             padding-left: 0;
         }
         h1 {
             font-family: 'Poppins', sans-serif;
-            color: var(--color-orange-main); /* El H1 mantiene el naranja */
+            color: var(--color-orange-main);
         }
         h2, h3, .font-lora {
             font-family: 'Lora', serif;
-            color: var(--color-text-primary); /* H2 y H3 usan el color de texto principal por defecto */
-            transition: color 0.3s ease;
+            color: var(--color-text-primary);
         }
-        h2.text-orange-700 { /* Para H2s que deben ser naranja oscuro */
+        h2.text-orange-700 {
             color: var(--color-orange-dark);
         }
         header {
-            background-color: var(--color-bg-secondary);
+            background-color: var(--color-header-bg); /* Usar variable para el color de la barra de título */
             box-shadow: var(--color-shadow-md);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            position: fixed; /* Fijo para que ocupe todo el ancho */
-            width: 100%;    /* Ocupa todo el ancho */
-            left: 0;        /* Se alinea a la izquierda */
+            position: fixed;
+            width: 100%;
+            left: 0;
             top: 0;
         }
-        /* Contenedor dentro del header para manejar el padding en desktop */
         .header-content-wrapper {
-            padding-left: 0; /* Por defecto para móvil */
-            transition: padding-left 0.3s ease;
+            padding-left: 0;
         }
 
         header nav a {
@@ -107,259 +98,102 @@
             transition: color 0.3s ease;
         }
         header nav a:hover {
-            color: var(--color-orange-main); /* Naranja principal al hacer hover en nav */
+            color: var(--color-orange-main);
         }
-        section#promo-menu { /* Sección con bg-orange-50 */
-            background-color: var(--color-bg-promo);
-            transition: background-color 0.3s ease;
-        }
-        .menu-item-card, section#ordenar, section#contacto, .review-card { /* Elementos que antes eran bg-white o bg-gray-50 */
-            background-color: var(--color-bg-secondary);
-            transition: background-color 0.3s ease;
-        }
-        .shadow-lg, .shadow-2xl { /* Aplicar sombras con variables */
-            box-shadow: var(--color-shadow-lg);
-            transition: box-shadow 0.3s ease;
-        }
-        #promo-menu .shadow-2xl { /* Sombra específica para tarjeta promo */
-            box-shadow: var(--color-shadow-md);
-        }
-        #contacto > div.mt-12 { /* Div del formulario de contacto (era bg-gray-100) */
-            background-color: var(--color-bg-tertiary);
-            transition: background-color 0.3s ease;
-        }
-        form label {
-            color: var(--color-text-primary); /* Etiquetas de formulario */
-        }
-        form input, form textarea {
-            background-color: var(--color-bg-secondary); /* Fondo de inputs/textareas */
-            color: var(--color-text-primary); /* Texto de inputs/textareas */
-            border: 1px solid var(--color-text-secondary); /* Borde de inputs/textareas */
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-        form input::placeholder, form textarea::placeholder {
-            color: var(--color-text-secondary); /* Color del placeholder */
-            opacity: 0.8; /* Ligeramente más transparente */
-        }
-        form input:focus, form textarea:focus {
-            border-color: var(--color-orange-main); /* Borde naranja al enfocar */
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.5); /* Anillo de enfoque naranja */
-        }
+        
         footer {
             background-color: var(--color-bg-footer);
-            color: var(--color-text-primary); /* El texto del footer toma el primary text color */
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        #visit-counter {
-            background-color: var(--color-bg-footer); /* Contador de visitas usa el color del footer */
             color: var(--color-text-primary);
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        #theme-toggle {
-            background-color: var(--color-bg-secondary); /* Botón de tema usa el color secundario */
-            color: var(--color-text-primary); /* Icono y texto del botón de tema */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            top: 0.5rem; /* Ajustado para que baje un poco */
-            right: 0.5rem; /* Ajustado para que se aleje un poco del borde */
-        }
-        #theme-toggle:hover {
-            transform: scale(1.05); /* Pequeño efecto hover */
-        }
-        #theme-toggle svg {
-            stroke: var(--color-text-primary); /* Color del trazo de los iconos */
-        }
-
         /* Hero section specific styles to keep text white */
         #hero-section h2, #hero-section p {
-            color: #ffffff !important; /* Mantiene el texto blanco fijo para el hero section */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Añade un poco de sombra para legibilidad */
+            color: #ffffff !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
-        /* Custom CSS para el efecto de giro 3D */
-        .flipper-container {
-            perspective: 1000px; /* Necesario para el efecto 3D */
-            position: relative; /* Asegura que los hijos absolutos se posicionen correctamente */
+        /* Estilos para los nuevos grupos de servicio */
+        .service-group {
+            border-radius: 0.5rem;
+            box-shadow: var(--color-shadow-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            min-height: 180px; /* Asegura un tamaño mínimo para todos los grupos */
+            color: white; /* Texto blanco por defecto para los banners */
         }
 
-        .flipper-inner {
-            position: absolute;
+        .service-group .static-banner {
             width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s; /* Transición para el giro */
-            transform-style: preserve-3d; /* Permite que los hijos tengan transformaciones 3D */
-        }
-
-        .flipper-front, .flipper-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden; /* Oculta la cara trasera del elemento cuando está volteado */
-            border-radius: 0.5rem; /* Equivalente a rounded-lg */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Para asegurar que el contenido dentro no se salga al rotar */
-            color: white; /* Texto blanco en la cara frontal */
-            font-weight: bold; /* Texto en negritas en la cara frontal */
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3); /* Separador sutil */
+        }
+        .service-group .static-banner img {
+            height: 3rem; /* Tamaño del logo */
+            width: auto;
+            margin-right: 0.75rem;
+            /* Añadido para bordes redondeados en los logos */
+            border-radius: 0.5rem; /* rounded-lg */
+        }
+        .service-group .static-banner span {
+            font-weight: bold;
+            font-size: 1.125rem; /* text-lg */
         }
 
-        .flipper-back {
-            transform: rotateY(180deg); /* Rota la cara trasera 180 grados inicialmente para que no sea visible */
-            flex-direction: column; /* Para apilar los botones iOS/Android verticalmente */
-            justify-content: space-between; /* Distribuye el espacio entre los botones */
-            padding: 0.5rem; /* Pequeño padding para los botones de descarga */
-            font-weight: 600; /* semi-bold para el texto de descarga */
-            color: var(--color-text-primary); /* El texto de flipper-back se adapta al tema */
+        /* Colores específicos para cada grupo de servicio */
+        .service-group.rappi { background-color: var(--color-rappi-group-bg); }
+        .service-group.uber { background-color: var(--color-uber-group-bg); }
+        .service-group.didi { background-color: var(--color-didi-group-bg); }
+        .service-group.whatsapp { 
+            background-color: var(--color-whatsapp-group-bg); 
+            cursor: default; /* Cambia el cursor para indicar que no es un enlace activo */
         }
-
-        /* Clase para activar el giro */
-        .flipper-container.flipped .flipper-inner {
-            transform: rotateY(180deg); /* Rota el contenedor interno para mostrar la cara trasera */
-        }
-
-        /* Colores para flipper (botones de apps de delivery), usan sus propias variables específicas */
-        .flipper-front.rappi { background-color: var(--color-flipper-bg-front-rappi); }
-        .flipper-front.uber { background-color: var(--color-flipper-bg-front-uber); }
-        .flipper-front.didi { background-color: var(--color-flipper-bg-front-didi); }
-        .flipper-back { background-color: var(--color-flipper-bg-back); }
-        .flipper-front, .flipper-back {
-            transition: background-color 0.3s ease; /* Transición para los colores del flipper */
-        }
-
-        /* SIDEBAR STYLES */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200px; /* Ancho de la barra lateral, más delgada */
-            height: 100%;
-            background-color: var(--color-bg-secondary); /* Fondo de la barra lateral, se adapta al tema */
-            box-shadow: var(--color-shadow-lg); /* Sombra para resaltar */
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-            padding-top: 6rem; /* Espacio para el encabezado - AUMENTADO para mobile */
-            display: flex;
-            flex-direction: column;
-            /* Transiciones para abrir/cerrar en móvil */
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(-100%); /* Oculta por defecto en móvil */
-        }
-
-        .sidebar.open {
-            transform: translateX(0); /* Muestra la barra lateral en móvil */
-        }
-
-        .sidebar a {
-            padding: 1rem 1rem; /* Ajustado el padding para el ancho reducido */
-            color: var(--color-text-primary); /* Color del texto del enlace, se adapta al tema */
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            font-weight: 600; /* semi-bold */
-            border-bottom: 1px solid rgba(107, 114, 128, 0.2); /* light border-gray-400 */
-        }
-
-        .sidebar a:hover {
-            background-color: var(--color-bg-tertiary); /* Fondo al pasar el ratón */
-            color: var(--color-orange-main); /* Color naranja al pasar el ratón */
-        }
-
-        .sidebar-header {
-            /* Eliminado position: absolute para que fluya normalmente dentro del sidebar */
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: flex-end; /* Alinea el botón de cierre a la derecha */
-            align-items: center;
-            width: 100%;
-            background-color: var(--color-bg-secondary); /* Fondo del header de la sidebar */
-            box-shadow: var(--color-shadow-md);
-            z-index: 1001; /* Asegura que el botón de cierre esté encima */
-            /* top: 0; left: 0; -- Eliminados para que el elemento fluya */
-        }
-
-        .menu-button { /* Estilo del botón de hamburguesa */
-            display: none; /* Oculto por defecto en desktop */
-            background-color: var(--color-bg-secondary);
-            color: var(--color-text-primary);
+        .service-group.whatsapp .whatsapp-message {
+            margin-top: 1rem;
+            font-size: 1.125rem; /* text-lg */
+            font-weight: bold;
+            text-align: center;
+            color: white;
             padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            cursor: pointer;
-            position: absolute; /* Aseguramos su posición en el header */
-            left: 1rem;
-            top: 1rem;
-            z-index: 600; /* Asegurarse de que esté por encima del encabezado */
+            border-radius: 0.25rem;
         }
-        .menu-button:hover {
+
+
+        /* Estilos para los botones de App Store y Google Play */
+        .app-download-button {
+            display: flex; /* Usar flexbox para centrar la imagen */
+            flex-direction: column; /* Apilar elementos verticalmente */
+            align-items: center; /* Centrar horizontalmente */
+            justify-content: center; /* Centrar verticalmente */
+            width: 80%; /* Ancho de los botones dentro del grupo */
+            margin-top: 0.5rem; /* Espacio entre botones */
+            transition: transform 0.2s ease-in-out;
+            height: auto; /* Permitir que la altura se ajuste al contenido */
+            padding: 0.5rem 0; /* Añadir un poco de padding al botón mismo */
+        }
+        .app-download-button:hover {
             transform: scale(1.05);
         }
-
-        /* Overlay para cuando el sidebar está abierto (solo móvil) */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-            z-index: 999; /* Por debajo de la barra lateral, pero por encima del contenido */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            display: none; /* Oculto por defecto en desktop */
+        .app-download-button img {
+            max-width: 100%; /* Asegura que la imagen no se desborde del botón */
+            height: auto; /* Mantiene la relación de aspecto */
+            object-fit: contain; /* Asegura que la imagen quepa sin recortarse */
         }
 
-        .sidebar-overlay.open {
-            opacity: 1;
-            visibility: visible;
+        /* Ajustes de tamaño específicos para cada tipo de insignia para lograr armonía visual */
+        .app-store-badge {
+            max-height: 40px; /* Reducir la altura máxima para que se vea más pequeña */
+            width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
         }
 
-        /* Submenu styles */
-        .sidebar-menu-item {
-            border-bottom: 1px solid rgba(107, 114, 128, 0.2); /* Border for the whole menu item */
-        }
-
-        .menu-toggle-parent {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1rem; /* Match parent padding */
-            cursor: pointer;
-            background-color: var(--color-bg-secondary);
-            color: var(--color-text-primary);
-            transition: background-color 0.2s ease, color 0.2s ease;
-            font-weight: 600; /* semi-bold */
-        }
-        .menu-toggle-parent:hover {
-            background-color: var(--color-bg-tertiary);
-            color: var(--color-orange-main);
-        }
-        .menu-toggle-parent svg {
-            transition: transform 0.3s ease;
-        }
-        .menu-toggle-parent.expanded svg {
-            transform: rotate(180deg); /* Rotate arrow when open */
-        }
-
-        .submenu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: var(--color-bg-tertiary); /* Slightly different background for submenus */
-        }
-
-        .submenu.open {
-            max-height: 500px; /* AUMENTADO para asegurar que siempre se expanda completamente */
-        }
-
-        .submenu a {
-            padding: 0.75rem 1rem 0.75rem 2.5rem; /* Padding con indentación */
-            font-weight: normal; /* Menos negrita que los enlaces padre */
-            border-bottom: none; /* Los submenús no necesitan bordes inferiores individuales */
-        }
-        .submenu a:hover {
-            background-color: var(--color-bg-primary); /* Hover más claro para submenús */
+        .google-play-badge {
+            max-height: 55px; /* Aumentar la altura máxima para que se vea más grande */
+            width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
         }
 
         /* Review card styles */
@@ -367,142 +201,58 @@
             border-radius: 0.5rem;
             box-shadow: var(--color-shadow-md);
             padding: 1.5rem;
+            background-color: var(--color-bg-secondary); /* Asegura que la tarjeta de reseña tenga el fondo suave */
         }
         .star-rating svg {
             color: #fcd34d; /* Amarillo para las estrellas */
             display: inline-block;
         }
 
-
         /* Responsive adjustments */
         @media (min-width: 769px) { /* Desktop styles */
             body {
-                padding-left: 200px; /* Espacio para la sidebar en desktop, ajustado */
-            }
-            header {
-                /* No se necesita left ni width aquí, ya que position: fixed y width: 100% lo manejan */
+                padding-left: 0;
             }
             .header-content-wrapper {
-                padding-left: 200px; /* Mueve el contenido del header a la derecha del sidebar */
-            }
-            .sidebar {
-                transform: translateX(0); /* Siempre visible en desktop */
-                display: flex; /* Asegura que se muestre como flex */
-            }
-            .sidebar-overlay {
-                display: none !important; /* Oculta el overlay en desktop */
-            }
-            .menu-button {
-                display: none !important; /* Oculta el botón de hamburguesa en desktop */
+                padding-left: 0;
             }
             header nav {
-                display: none !important; /* Oculta la navegación principal en desktop, ya que la sidebar la reemplaza */
-            }
-            #theme-toggle {
-                right: 0.5rem; /* Ajuste para el botón de tema en desktop */
+                display: flex !important;
             }
         }
         @media (max-width: 768px) { /* Mobile styles */
-            .menu-button {
-                display: block; /* Muestra el botón de hamburguesa en móvil */
-            }
             header nav {
-                display: none; /* Oculta la navegación horizontal en móvil */
+                display: flex !important;
+                justify-content: center;
+                flex-wrap: wrap;
             }
-            .sidebar-overlay {
-                display: block; /* Muestra el overlay en móvil */
-            }
-            #theme-toggle {
-                right: 0.5rem; /* Ajuste para el botón de tema en móvil */
-            }
-            /* Ocultar botón de cierre en móvil si el sidebar está oculto */
-            #close-sidebar {
-                display: block; /* Siempre visible en mobile, pero se controla por JS */
-            }
-            .header-content-wrapper {
-                padding-left: 0; /* Asegura que no haya padding extra en móvil */
+            header nav a {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
             }
         }
     </style>
 </head>
-<body class="">
-
+<body>
     <!-- Encabezado -->
     <header class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 relative header-content-wrapper">
-            <!-- Botón de Menú Hamburguesa para móvil -->
-            <button id="menu-toggle" class="menu-button">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-
-            <!-- Botón de Modo Claro/Oscuro -->
-            <button id="theme-toggle" class="absolute p-2 rounded-full flex items-center justify-center hover:ring-2 hover:ring-orange-500 z-50 top-2 right-2">
-                <!-- Icono de Luna (Modo Oscuro) -->
-                <svg id="moon-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-                <!-- Icono de Sol (Modo Claro) -->
-                <svg id="sun-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M4 12H3m15.354 5.354l-.707.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                </svg>
-            </button>
-
             <!-- Primera fila: Logo y Título centrados -->
             <div class="flex items-center justify-center mb-4">
-                <!-- Logo del restaurante - Tamaño ajustado un 50% más grande -->
-                <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750317831/ChatGPT_Image_19_jun_2025_01_17_07_a.m._hwefff.png" alt="Logo Yiyis Burguers" class="w-24 h-24 mr-4">
-                <!-- Título del restaurante - Tamaño ajustado un 65% más grande -->
+                <!-- Logo del restaurante -->
+                <img id="yiyis-logo" src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750664045/ChatGPT_Image_19_jun_2025_01_17_07_a.m._hwefff-removebg-preview_bmz56g.png" alt="Logo Yiyis Burguers" class="w-24 h-24 mr-4">
+                <!-- Título del restaurante -->
                 <h1 class="text-5xl font-bold">Yiyis Burguers Y Mas</h1>
             </div>
-            <!-- Segunda fila: Navegación centrada y un escalón abajo (AHORA OCULTA) -->
-            <nav class="flex justify-center flex-wrap" style="display: none;">
+            <!-- Segunda fila: Navegación centrada -->
+            <nav class="flex justify-center flex-wrap">
                 <a href="#ordenar" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Ordenar</a>
-                <a href="#promo-menu" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Promos</a>
-                <a href="#menu" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Menú</a>
                 <a href="#contacto" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Contacto</a>
-                <a href="#contacto" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Visítanos</a>
+                <a href="#reseñas" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Reseñas</a>
+                <a href="https://www.google.com/maps/place/Yiyi's+Burguers+Y+Mas/@31.58251,-106.4017586,17z/data=!4m6!3m5!1s0x86e76798aa8b40ad:0xc435c4e6407f03e0!8m2!3d31.58251!4d-106.3991837!16s%2Fg%2F11b6s_w97y" target="_blank" class="px-2 py-2 text-base sm:px-4 sm:text-lg">Visítanos</a>
             </nav>
         </div>
     </header>
-
-    <!-- Sidebar (barra lateral) -->
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <!-- Este botón de cierre solo es visible en móvil cuando el sidebar está abierto -->
-            <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-        <a href="#ordenar">Ordenar</a>
-        <a href="#promo-menu">Promos</a>
-
-        <!-- Menu con submenús -->
-        <div class="sidebar-menu-item">
-            <div class="menu-toggle-parent" data-target="submenu-menu">
-                <span class="flex-grow">Menú</span>
-                <svg class="w-5 h-5 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </div>
-            <div id="submenu-menu" class="submenu">
-                <a href="#promo-menu">Menú Promocional de la Semana</a>
-                <a href="#combos-section">Combos</a>
-                <a href="#yiyis-kids-section">Yiyi's Kids</a>
-            </div>
-        </div>
-        
-        <a href="#contacto">Contacto</a>
-        <a href="#contacto">Visítanos</a>
-        <!-- Nuevo enlace para Reseñas -->
-        <a href="#reseñas">Reseñas</a>
-    </div>
-
-    <!-- Sidebar Overlay (superposición) -->
-    <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
     <!-- Sección Principal (Hero Section) -->
     <section id="hero-section" class="relative h-96 bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750317832/img_748cd48bdf127dfb0fdce2ef03a1b0c1_lkekqn.jpg');">
@@ -518,223 +268,6 @@
         </div>
     </section>
 
-    <!-- Sección de Menú Promocional -->
-    <section id="promo-menu" class="py-12">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center font-lora mb-10 text-orange-700">Menú Promocional de la Semana</h2>
-            <div class="flex justify-center">
-                <!-- Platillo Promocional -->
-                <div class="menu-item-card rounded-lg shadow-2xl overflow-hidden max-w-48 transform hover:scale-105 transition-transform">
-                    <img src="https://placehold.co/600x400/fb923c/ffffff?text=Combo+Pareja" alt="Imagen del platillo promocional" class="w-full h-24 object-cover">
-                    <div class="p-2 text-center">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo Pareja</h3>
-                        <p class="text-xs mb-2">2 Hamburguesas Clásicas + Papas Grandes + 2 Refrescos.</p>
-                        <p class="text-base font-bold text-orange-600">$250.00 MXN</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Menú General con Categorías -->
-    <section id="menu" class="py-12">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center font-lora mb-10">Nuestro Menú</h2>
-            
-            <!-- Categoría: Combos -->
-            <h3 class="text-3xl font-bold font-lora text-center mb-8 text-orange-600" id="combos-section">Combos</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                
-                <!-- Combo-Texana Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Texana" alt="Imagen de Combo Texana" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Texana Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Texana " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger..."</p>
-                        <p class="text-base font-bold text-orange-600">$233.00 MXN</p>
-                    </div>
-                </div>
-                
-                <!-- Combo-Regia Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Regia" alt="Imagen de Combo Regia" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Regia Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Regia " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger."</p>
-                        <p class="text-base font-bold text-orange-600">$233.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Especial Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Especial" alt="Imagen de Combo Especial" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Especial Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Especial " + ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger ... *</p>
-                        <p class="text-base font-bold text-orange-600">$183.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Yiyi's Chicken Burge Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Chicken" alt="Imagen de Combo Chicken Burger" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Yiyi's Chicken Burge Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Chicken Burgers*1 + Botana a Escoger . * 1 + ELIGE TU REFRESCO DE 600 ML</p>
-                        <p class="text-base font-bold text-orange-600">$183.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Sencillo Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Sencillo" alt="Imagen de Combo Sencillo" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Sencillo Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Sencilla*1 + Botana Barcel a Escoger*1 + ELIGE TU REFRESCO DE 600 ML*1</p>
-                        <p class="text-base font-bold text-orange-600">$170.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Hawaiana Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Hawaiana" alt="Imagen de Combo Hawaiana" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Hawaiana Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">ELIGE TU REFRESCO DE 600 ML*1 + Yiyi's Burguers Hawaiana1 + Botana a Escoger..*1</p>
-                        <p class="text-base font-bold text-orange-600">$223.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Doricrunch Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Doricrunch" alt="Imagen de Combo Doricrunch" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Doricrunch Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Doricrunch ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger * 1</p>
-                        <p class="text-base font-bold text-orange-600">$293.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Bbq Papas y Refresco 600 Ml -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+BBQ" alt="Imagen de Combo BBQ" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Bbq Papas y Refresco 600 Ml</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers Bbq o Salsas a Escoger " ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger.1</p>
-                        <p class="text-base font-bold text-orange-600">$203.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo-Yiyi's Burguers Personalizado -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Personalizado" alt="Imagen de Combo Personalizado" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Yiyi's Burguers Personalizado</h3>
-                        <p class="text-xs mb-2">Yiyi's Burguers a Tu Gusto.."1 + ELIGE TU REFRESCO DE 600 ML*1 + Botana a Escoger</p>
-                        <p class="text-base font-bold text-orange-600">$170.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Es Mejor Juntos -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Es+Mejor+Juntos" alt="Imagen de Es Mejor Juntos" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Es Mejor Juntos</h3>
-                        <p class="text-xs mb-2">Coca Cola o Sabores Lata 355 o 473 Ml*1 + Hamburguesa Sencilla "</p>
-                        <p class="text-base font-bold text-orange-600">$125.00 MXN</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Categoría: Yiyi's Kids -->
-            <h3 class="text-3xl font-bold font-lora text-center mb-8 text-orange-600" id="yiyis-kids-section">Yiyi's Kids</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Yiyi's Kids Palomitas -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Palomitas" alt="[Image of Kids Palomitas]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Yiyi's Kids Palomitas</h3>
-                        <p class="text-xs mb-2">125g de palomitas de pollo, catsup.</p>
-                        <p class="text-base font-bold text-orange-600">$59.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Yiyi's Kids Nuggets 6 Pzs -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Nuggets" alt="[Image of Kids Nuggets]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo-Nuggets 6 Pzs</h3>
-                        <p class="text-xs mb-2">6 pzs de nuggets de pollo, catsup.</p>
-                        <p class="text-base font-bold text-orange-600">$59.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo Palomitas Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Palomitas" alt="[Image of Combo Kids Palomitas]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo Palomitas Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">Papas Fritas Naturales 220 g*1 + Yiyi's Kids Palomitas + Elige Tu Bebida Kids "</p>
-                        <p class="text-base font-bold text-orange-600">$116.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo Hot Dog Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Hot+Dog" alt="[Image of Combo Kids Hot Dog]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo Hot Dog Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">Hot Dog Yiyi's Kids*1 + Elige Tu Bebida Kids*1</p>
-                        <p class="text-base font-bold text-orange-600">$78.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Hot Dog Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Hot+Dog" alt="[Image of Kids Hot Dog]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Hot Dog Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">hot dog , salchicha p/hot dog , mayonesa , mostaza , catsup</p>
-                        <p class="text-base font-bold text-orange-600">$59.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo Nuggets Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Nuggets" alt="[Image of Combo Kids Nuggets]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo Nuggets Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">Papas Fritas Naturales 220 g*1 + Yiyi's Kids Nuggets 6 Pzs*1 + Elige Tu Bebida Kids*1</p>
-                        <p class="text-base font-bold text-orange-600">$116.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Hamburguesa Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Kids+Hamburguesa" alt="[Image of Kids Hamburguesa]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Hamburguesa Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">hamburguesa con carne de res 80g , queso tipo americano , winy , mayonesa , mostaza , catsup</p>
-                        <p class="text-base font-bold text-orange-600">$76.00 MXN</p>
-                    </div>
-                </div>
-
-                <!-- Combo Hamburguesa Yiyi's Kids -->
-                <div class="menu-item-card rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://placehold.co/600x400/e2e8f0/334155?text=Combo+Kids+Hamburguesa" alt="[Image of Combo Kids Hamburguesa]" class="w-full h-24 object-cover">
-                    <div class="p-2">
-                        <h3 class="text-base font-bold font-lora mb-1">Combo Hamburguesa Yiyi's Kids</h3>
-                        <p class="text-xs mb-2">Hamburguesa Yiyi's Kids*1 Elige Tu Bebida Kids*1</p>
-                        <p class="text-base font-bold text-orange-600">$95.00 MXN</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- Sección de Ordenar Ahora -->
     <section id="ordenar" class="py-12">
         <div class="container mx-auto px-6 text-center">
@@ -742,116 +275,71 @@
             <p class="max-w-2xl mx-auto mb-10">Descarga tu app de delivery favorita o envíanos un WhatsApp para hacer tu pedido.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 
-                <!-- Rappi Card (Flipper) -->
-                <div id="rappi-card" class="relative w-full h-[140px] rounded-lg shadow-lg cursor-pointer flipper-container">
-                    <div class="flipper-inner">
-                        <!-- Front Face -->
-                        <div class="flipper-front rappi">
-                            <div class="flex items-center justify-center w-2/5 h-full">
-                                <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/rappilogo_yxnazg.jpg" alt="Logo de Rappi" class="h-12 w-auto">
-                            </div>
-                            <div class="flex items-center justify-center w-3/5 h-full text-center">
-                                <span>Disponible en Rappi</span>
-                            </div>
-                        </div>
-                        <!-- Back Face -->
-                        <div class="flipper-back">
-                            <!-- iOS button (top half) -->
-                            <a href="https://apps.apple.com/co/app/rappi-pide-todo-en-minutos/id984044296" target="_blank" class="flex items-center justify-center p-2 rounded-t-lg transition-colors w-full h-1/2 hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-8 h-8 mr-2">
-                                    <path d="M117.2 278.4C108.9 292.5 98.7 305.8 86.8 318.4L80 325.2C69 336.5 59 347.1 50.8 357.7c-17.7 22.3-25.7 44-25.7 65.6 0 17.6 4.7 32.7 14.3 45.4 9.6 12.7 22.6 23.3 39.3 31.8 16.6 8.5 35.8 12.8 57.6 12.8 35.8 0 65.9-10.4 90.4-31.3 14.9-12.8 26.6-26.6 35.1-41.5 8.5-14.9 13.9-29.3 16.2-43.2 2.3-13.9 3.4-27.1 3.4-39.7 0-14.7-2.3-29.3-6.8-43.9-4.5-14.6-11.4-28.7-20.7-42.3-9.3-13.6-21.7-28-37.2-43.2-22.3-22.3-43.2-40.4-62.8-54.2-19.6-13.8-37.2-24.9-52.8-33.3L117.2 278.4zM394.8 54.2C384.4 46.2 370.4 42.1 352.6 42.1c-16.7 0-33.6 4.6-50.6 13.8-17 9.2-32.9 21-47.6 35.4-14.7 14.4-27.3 29.5-37.9 45.3s-17 31.8-19.8 46.2c-2.8 14.4-4.2 27.9-4.2 40.5 0 13.8 2.2 27.6 6.6 41.5 4.4 13.9 11.2 27.5 20.4 40.8 9.2 13.3 21.6 27.5 37.1 42.6 22.3 22.3 43.2 40.4 62.8 54.2 19.6 13.8 37.2 24.9 52.8 33.3 15.6 8.4 29.2 13.8 40.9 16.2 11.7 2.4 22 3.6 30.9 3.6 17.6 0 32.7-4.7 45.4-14.3 12.7-9.6 23.3-22.6 31.8-39.3 8.5-16.6 12.8-35.8 12.8-57.6 0-35.8-10.4-65.9-31.3-90.4-12.8-14.9-26.6-26.6-41.5-35.1-14.9-8.5-29.3-13.9-43.2-16.2-13.9-2.3-27.1-3.4-39.7-3.4-14.7 0-29.3 2.3-43.9 6.8-14.6 4.5-28.7 11.4-42.3 20.7-13.6 9.3-28 21.7-43.2 37.2L394.8 54.2zM286.7 301.3c21.8-21.8 32.7-43.2 32.7-64.2s-10.9-42.3-32.7-64.2c-21.8-21.8-43.2-32.7-64.2-32.7s-42.3 10.9-64.2 32.7c-21.8 21.8 43.2 32.7 64.2 32.7s42.3-10.9 64.2-32.7z"></path>
-                                </svg>
-                                <div class="flex flex-col items-start leading-tight">
-                                    <span class="text-xs font-normal">Descarga y pide</span>
-                                    <span class="text-sm font-bold">desde iOS</span>
-                                </div>
-                            </a>
-                            <!-- Android button (bottom half) -->
-                            <a href="https://play.google.com/store/apps/details?id=com.grability.rappi" target="_blank" class="flex items-center justify-center p-2 rounded-b-lg transition-colors w-full h-1/2 hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-8 h-8 mr-2">
-                                    <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm-15.6 339.7l-94.4-94.4 69.1-69.1 113.6 113.6-88.3 49.9zM192 128l-64 64V128h64zm128 256l-64-64 64-64 64 64-64 64zm96-128v-64h-64l64 64zM256 48A208 208 0 1 1 48 256a208 208 0 0 1 208-208z"></path>
-                                </svg>
-                                <div class="flex flex-col items-start leading-tight">
-                                    <span class="text-xs font-normal">Descarga y pide</span>
-                                    <span class="text-sm font-bold">desde Android</span>
-                                </div>
-                            </a>
-                        </div>
+                <!-- Rappi Group -->
+                <div class="service-group rappi flex flex-col items-center justify-between p-4 rounded-lg shadow-lg">
+                    <div class="static-banner">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/rappilogo_yxnazg.jpg" alt="Logo de Rappi" class="h-12 w-auto">
+                        <span>Disponible en Rappi</span>
                     </div>
+                    <a href="https://apps.apple.com/co/app/rappi-pide-todo-en-minutos/id984044296" target="_blank" class="app-download-button">
+                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.grability.rappi" target="_blank" class="app-download-button">
+                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                    </a>
                 </div>
 
-                <!-- Uber Eats Card (Flipper) -->
-                <div id="uber-eats-card" class="relative w-full h-[140px] rounded-lg shadow-lg cursor-pointer flipper-container">
-                    <div class="flipper-inner">
-                        <!-- Front Face -->
-                        <div class="flipper-front uber">
-                            <div class="flex items-center justify-center w-2/5 h-full">
-                                <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316426/ubereatsloco_j6jmlj.jpg" alt="Logo de Uber Eats" class="h-12 w-auto">
-                            </div>
-                            <div class="flex items-center justify-center w-3/5 h-full text-center">
-                                <span>Disponible en Uber Eats</span>
-                            </div>
-                        </div>
-                        <!-- Back Face -->
-                        <div class="flipper-back">
-                            <!-- iOS button (top half) -->
-                            <a href="https://apps.apple.com/us/app/uber-eats-food-groceries/id1058959277" target="_blank" class="flex items-center justify-center p-2 rounded-t-lg transition-colors w-full h-1/2 hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-8 h-8 mr-2">
-                                    <path d="M117.2 278.4C108.9 292.5 98.7 305.8 86.8 318.4L80 325.2C69 336.5 59 347.1 50.8 357.7c-17.7 22.3-25.7 44-25.7 65.6 0 17.6 4.7 32.7 14.3 45.4 9.6 12.7 22.6 23.3 39.3 31.8 16.6 8.5 35.8 12.8 57.6 12.8 35.8 0 65.9-10.4 90.4-31.3 14.9-12.8 26.6-26.6 35.1-41.5 8.5-14.9 13.9-29.3 16.2-43.2 2.3-13.9 3.4-27.1 3.4-39.7 0-14.7-2.3-29.3-6.8-43.9-4.5-14.6-11.4-28.7-20.7-42.3-9.3-13.6-21.7-28-37.2-43.2-22.3-22.3-43.2-40.4-62.8-54.2-19.6-13.8-37.2-24.9-52.8-33.3L117.2 278.4zM394.8 54.2C384.4 46.2 370.4 42.1 352.6 42.1c-16.7 0-33.6 4.6-50.6 13.8-17 9.2-32.9 21-47.6 35.4-14.7 14.4-27.3 29.5-37.9 45.3s-17 31.8-19.8 46.2c-2.8 14.4-4.2 27.9-4.2 40.5 0 13.8 2.2 27.6 6.6 41.5 4.4 13.9 11.2 27.5 20.4 40.8 9.2 13.3 21.6 27.5 37.1 42.6 22.3 22.3 43.2 40.4 62.8 54.2 19.6 13.8 37.2 24.9 52.8 33.3 15.6 8.4 29.2 13.8 40.9 16.2 11.7 2.4 22 3.6 30.9 3.6 17.6 0 32.7-4.7 45.4-14.3 12.7-9.6 23.3-22.6 31.8-39.3 8.5-16.6 12.8-35.8 12.8-57.6 0-35.8-10.4-65.9-31.3-90.4-12.8-14.9-26.6-26.6-41.5-35.1-14.9-8.5-29.3-13.9-43.2-16.2-13.9-2.3-27.1-3.4-39.7-3.4-14.7 0-29.3 2.3-43.9 6.8-14.6 4.5-28.7 11.4-42.3 20.7-13.6 9.3-28 21.7-43.2 37.2L394.8 54.2zM286.7 301.3c21.8-21.8 32.7-43.2 32.7-64.2s-10.9-42.3-32.7-64.2c-21.8-21.8-43.2-32.7-64.2-32.7s-42.3 10.9-64.2 32.7c-21.8 21.8 43.2 32.7 64.2 32.7s42.3-10.9 64.2-32.7z"></path>
-                                </svg>
-                                <div class="flex flex-col items-start leading-tight">
-                                    <span class="text-xs font-normal">Descarga y pide</span>
-                                    <span class="text-sm font-bold">desde iOS</span>
-                                </div>
-                            </a>
-                            <!-- Android button (bottom half) -->
-                            <a href="https://play.google.com/store/apps/details?id=com.ubercab.eats" target="_blank" class="flex items-center justify-center p-2 rounded-b-lg transition-colors w-full h-1/2 hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-8 h-8 mr-2">
-                                    <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm-15.6 339.7l-94.4-94.4 69.1-69.1 113.6 113.6-88.3 49.9zM192 128l-64 64V128h64zm128 256l-64-64 64-64 64 64-64 64zm96-128v-64h-64l64 64zM256 48A208 208 0 1 1 48 256a208 208 0 0 1 208-208z"></path>
-                                </svg>
-                                <div class="flex flex-col items-start leading-tight">
-                                    <span class="text-xs font-normal">Descarga y pide</span>
-                                    <span class="text-sm font-bold">desde Android</span>
-                                </div>
-                            </a>
-                        </div>
+                <!-- Uber Eats Group -->
+                <div class="service-group uber flex flex-col items-center justify-between p-4 rounded-lg shadow-lg">
+                    <div class="static-banner">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316426/ubereatsloco_j6jmlj.jpg" alt="Logo de Uber Eats" class="h-12 w-auto">
+                        <span>Disponible en Uber Eats</span>
                     </div>
+                    <a href="https://apps.apple.com/us/app/uber-eats-food-groceries/id1058959277" target="_blank" class="app-download-button">
+                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ubercab.eats" target="_blank" class="app-download-button">
+                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                    </a>
                 </div>
 
-                <!-- DiDi Food Card (Flipper) -->
-                <div id="didi-food-card" class="relative w-full h-[140px] rounded-lg shadow-lg cursor-pointer flipper-container">
-                    <div class="flipper-inner">
-                        <!-- Front Face -->
-                        <div class="flipper-front didi">
-                            <div class="flex items-center justify-center w-2/5 h-full">
-                                <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/didifoodlogo_nb9rqo.jpg" alt="Logo de DiDi Food" class="h-12 w-auto">
-                            </div>
-                            <div class="flex items-center justify-center w-3/5 h-full text-center">
-                                <span>Disponible en DiDi Food</span>
-                            </div>
-                        </div>
-                        <!-- Back Face -->
-                        <div class="flipper-back">
-                            <!-- iOS button (top half) -->
-                            <a href="https://apps.apple.com/cn/app/didi-food-food-delivery/id1434256853" target="_blank" class="flex items-center justify-center p-2 rounded-t-lg transition-colors w-full h-1/2 hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-8 h-8 mr-2">
-                                    <path d="M117.2 278.4C108.9 292.5 98.7 305.8 86.8 318.4L80 325.2C69 336.5 59 347.1 50.8 357.7c-17.7 22.3-25.7 44-25.7 65.6 0 17.6 4.7 32.7 14.3 45.4 9.6 12.7 22.6 23.3 39.3 31.8 16.6 8.5 35.8 12.8 57.6 12.8 35.8 0 65.9-10.4 90.4-31.3 14.9-12.8 26.6-26.6 35.1-41.5 8.5-14.9 13.9-29.3 16.2-43.2 2.3-13.9 3.4-27.1 3.4-39.7 0-14.7-2.3-29.3-6.8-43.9-4.5-14.6-11.4-28.7-20.7-42.3-9.3-13.6-21.7-28-37.2-43.2-22.3-22.3-43.2-40.4-62.8-54.2-19.6-13.8-37.2-24.9-52.8-33.3L117.2 278.4zM394.8 54.2C384.4 46.2 370.4 42.1 352.6 42.1c-16.7 0-33.6 4.6-50.6 13.8-17 9.2-32.9 21-47.6 35.4-14.7 14.4-27.3 29.5-37.9 45.3s-17 31.8-19.8 46.2c-2.8 14.4-4.2 27.9-4.2 40.5 0 13.8 2.2 27.6 6.6 41.5 4.4 13.9 11.2 27.5 20.4 40.8 9.2 13.3 21.6 27.5 37.1 42.6 22.3 22.3 43.2 40.4 62.8 54.2 19.6 13.8 37.2 24.9 52.8 33.3 15.6 8.4 29.2 13.8 40.9 16.2 11.7 2.4 22 3.6 30.9 3.6 17.6 0 32.7-4.7 45.4-14.3 12.7-9.6 23.3-22.6 31.8-39.3 8.5-16.6 12.8-35.8 12.8-57.6 0-35.8-10.4-65.9-31.3-90.4-12.8-14.9-26.6-26.6-41.5-35.1-14.9-8.5-29.3-13.9-43.2-16.2-13.9-2.3-27.1-3.4-39.7-3.4-14.7 0-29.3 2.3-43.9 6.8-14.6 4.5-28.7 11.4-42.3 20.7-13.6 9.3-28 21.7-43.2 37.2L394.8 54.2zM286.7 301.3c21.8-21.8 32.7-43.2 32.7-64.2s-10.9-42.3-32.7-64.2c-21.8-21.8-43.2-32.7-64.2-32.7s-42.3 10.9-64.2 32.7c-21.8 21.8 43.2 32.7 64.2 32.7s42.3-10.9 64.2-32.7z"></path>
-                                </svg>
-                                <div class="flex flex-col items-start leading-tight">
-                                    <span class="text-xs font-normal">Descarga y pide</span>
-                                    <span class="text-sm font-bold">desde Android</span>
-                                </div>
-                            </a>
-                        </div>
+                <!-- DiDi Food Group -->
+                <div class="service-group didi flex flex-col items-center justify-between p-4 rounded-lg shadow-lg">
+                    <div class="static-banner">
+                        <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/didifoodlogo_nb9rqo.jpg" alt="Logo de DiDi Food" class="h-12 w-auto">
+                        <span>Disponible en DiDi Food</span>
                     </div>
+                    <a href="https://apps.apple.com/cn/app/didi-food-food-delivery/id1434256853" target="_blank" class="app-download-button">
+                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.didi.food.customer" target="_blank" class="app-download-button">
+                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                    </a>
                 </div>
 
-                <!-- Botón WhatsApp -->
-                <a href="https://wa.me/526562939244" target="_blank" class="flex items-center justify-center p-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-lg transition-transform transform hover:scale-105 w-full h-[140px]">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="Logo de WhatsApp" class="w-12 h-12 mr-3">
-                    <span>Pedir por WhatsApp</span>
-                </a>
+                <!-- WhatsApp Group (modificado para banner estático) -->
+                <div class="service-group whatsapp flex flex-col items-center justify-center p-4 rounded-lg shadow-lg">
+                    <div class="flex flex-col items-center justify-center text-white font-bold w-full h-full">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="Logo de WhatsApp" class="w-16 h-16 mb-2">
+                        <span>Pedir por WhatsApp</span>
+                        <div class="whatsapp-message">Próximamente podrás pedir también por este medio.</div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Sección de Facebook (Solo enlace directo) -->
+    <section id="facebook-section" class="py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold font-lora mb-4">Síguenos en Facebook</h3>
+            <p class="text-lg mb-6">Encuentra nuestras últimas noticias, promociones y eventos en nuestra página de Facebook.</p>
+            <a href="https://www.facebook.com/YIYISBURGUER/" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 transform hover:scale-105">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.24.195 2.24.195v2.46h-1.26c-1.247 0-1.637.779-1.637 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                </svg>
+                Visita Nuestra Página de Facebook
+            </a>
         </div>
     </section>
 
@@ -859,7 +347,7 @@
     <section id="contacto" class="py-12">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center font-lora mb-10">Visítanos y Contáctanos</h2>
-            <div class="flex flex-wrap justify-center gap-10">
+            <div class="flex flex-wrap justify-center gap-10 mb-10">
                 
                 <!-- Dirección -->
                 <div class="text-center">
@@ -871,38 +359,14 @@
                 <!-- Horarios -->
                 <div class="text-center">
                     <h3 class="text-2xl font-semibold mb-2">Horarios</h3>
-                    <p><strong>Lunes a Sábado:</strong> 12:00 PM - 10:00 PM</p>
-                    <p><strong>Domingo:</strong> 12:00 PM - 8:00 PM</p>
+                    <p><strong>Lunes a Domingo:</strong> 9:00 AM - 1:00 AM</p>
                 </div>
 
             </div>
+
             <!-- Mapa -->
             <div class="mt-10 rounded-lg overflow-hidden shadow-lg">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212.4296089408442!2d-106.40175861171302!3d31.582509987725295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e76798aa8b40ad%3A0xc435c4e6407f03e0!2sYiyi's%20Burguers%20Y%20Mas!5e0!3m2!1ses!2smx!4v1750311140030!5m2!1ses!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-            <!-- Formulario de Contacto -->
-            <div class="mt-12 max-w-lg mx-auto p-8 rounded-lg shadow-lg">
-                <h3 class="text-3xl font-bold font-lora mb-6 text-center">Envíanos un Mensaje</h3>
-                <form>
-                    <div class="mb-4">
-                        <label for="nombre" class="block text-sm font-bold mb-2">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu Nombre" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-bold mb-2">Email:</label>
-                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="tu.email@ejemplo.com" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="mensaje" class="block text-sm font-bold mb-2">Mensaje:</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300">
-                            Enviar Mensaje
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
@@ -928,7 +392,7 @@
                         </div>
                     </div>
                     <p class="mb-4">"¡Las hamburguesas de Yiyis son las mejores! Siempre frescas y con un sabor increíble. Mi lugar favorito para pedir a domicilio."</p>
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div class="flex items-center text-sm text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>
                         <span>Reseña de Google</span>
                     </div>
@@ -949,7 +413,7 @@
                         </div>
                     </div>
                     <p class="mb-4">"Excelente servicio y la comida siempre llega caliente. La hamburguesa BBQ es mi favorita, ¡súper recomendada!"</p>
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div class="flex items-center text-sm text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>
                         <span>Reseña de Google</span>
                     </div>
@@ -965,12 +429,12 @@
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.539 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.565-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.539 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.565-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.539 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.565-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.539 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.565-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.683-1.539 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.565-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                             </div>
                         </div>
                     </div>
                     <p class="mb-4">"Los combos para niños son geniales, a mis hijos les encanta. ¡Siempre una buena opción para la cena familiar!"</p>
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div class="flex items-center text-sm text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>
                         <span>Reseña de Google</span>
                     </div>
@@ -987,15 +451,14 @@
     </footer>
 
     <!-- Botón flotante "¡Ordena Ahora!" -->
-    <a id="sticky-order-button" href="#ordenar" class="fixed bottom-4 right-4 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105 hidden-float-button z-50">
+    <a id="sticky-order-button" href="#ordenar" class="fixed bottom-4 right-4 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105 z-50">
         ¡Ordena Ahora!
     </a>
 
-    <!-- Contador de Visitas -->
-    <div id="visit-counter" class="fixed bottom-4 left-4 text-sm px-3 py-2 rounded-lg shadow-lg z-50">Cargando visitas...</div>
+    <!-- El modal ha sido eliminado. -->
 
     <script type="module">
-        console.log("Script principal cargado.");
+        console.log("Script principal cargado. (Módulo)");
 
         // Importar módulos de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -1005,7 +468,7 @@
         // Configuración de Firebase (proporcionada por el entorno de Canvas)
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         // Inicializar Firebase
         const app = initializeApp(firebaseConfig);
@@ -1013,297 +476,110 @@
         const auth = getAuth(app);
         let userId = null; // Variable para almacenar el ID de usuario
 
-        // Lógica de Autenticación Firebase
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                userId = user.uid;
-                console.log("Firebase: Usuario autenticado con UID:", userId);
-            } else {
-                try {
-                    if (initialAuthToken) {
-                        await signInWithCustomToken(auth, initialAuthToken);
-                        userId = auth.currentUser.uid;
-                        console.log("Firebase: Sesión iniciada con token personalizado. UID:", userId);
-                    } else {
-                        await signInAnonymously(auth);
-                        userId = auth.currentUser.uid;
-                        console.log("Firebase: Sesión iniciada anónimamente. UID:", userId);
+        // Lógica de Autenticación Firebase y listeners después de que el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOMContentLoaded disparado. Inicializando Firebase y listeners.");
+
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    userId = user.uid;
+                    console.log("Firebase: Usuario autenticado con UID:", userId);
+                } else {
+                    try {
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                            userId = auth.currentUser.uid;
+                            console.log("Firebase: Sesión iniciada con token personalizado. UID:", userId);
+                        } else {
+                            await signInAnonymously(auth);
+                            userId = auth.currentUser.uid;
+                            console.log("Firebase: Sesión iniciada anónimamente. UID:", userId);
+                        }
+                    } catch (error) {
+                        console.error("Firebase: Error durante la autenticación:", error);
+                        userId = crypto.randomUUID();
+                        console.warn("Firebase: No se pudo autenticar. Usando un ID de usuario aleatorio:", userId);
                     }
-                } catch (error) {
-                    console.error("Firebase: Error durante la autenticación:", error);
-                    userId = crypto.randomUUID();
-                    console.warn("Firebase: No se pudo autenticar. Usando un ID de usuario aleatorio:", userId);
                 }
-            }
-            if (userId) {
-                recordVisit();
-                setupVisitCounterListener();
-            }
-        });
-
-        // Función para registrar una visita
-        async function recordVisit() {
-            try {
-                const visitsCollectionRef = collection(db, `artifacts/${appId}/public/data/visits`);
-                await addDoc(visitsCollectionRef, {
-                    timestamp: serverTimestamp(),
-                    userId: userId 
-                });
-                console.log("Firebase: Visita registrada con éxito.");
-            } catch (e) {
-                console.error("Firebase: Error al añadir documento de visita: ", e);
-            }
-        }
-
-        // Función para configurar el listener del contador de visitas
-        function setupVisitCounterListener() {
-            const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-            const visitsQuery = query(
-                collection(db, `artifacts/${appId}/public/data/visits`),
-                where('timestamp', '>=', thirtyDaysAgo)
-            );
-
-            onSnapshot(visitsQuery, (snapshot) => {
-                let visitCount = 0;
-                snapshot.forEach(doc => {
-                    const timestamp = doc.data().timestamp;
-                    if (timestamp && timestamp.toDate) {
-                        const visitDate = timestamp.toDate();
-                        if (visitDate >= thirtyDaysAgo) {
-                            visitCount++;
-                        }
-                    } else if (timestamp instanceof Date) {
-                         if (timestamp >= thirtyDaysAgo) {
-                            visitCount++;
-                        }
-                    }
-                });
-                document.getElementById('visit-counter').textContent = `Visitas (30 días): ${visitCount}`;
-                console.log("Contador de visitas actualizado:", visitCount);
-            }, (error) => {
-                console.error("Firebase: Error al escuchar visitas: ", error);
-                document.getElementById('visit-counter').textContent = `Error al cargar visitas.`;
+                if (userId) {
+                    // Solo registrar visita si hay un userId válido
+                    recordVisit();
+                }
             });
-        }
 
-
-        // --- Lógica del Tema Claro/Oscuro ---
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const moonIcon = document.getElementById('moon-icon');
-        const sunIcon = document.getElementById('sun-icon');
-
-        function applyTheme(theme) {
-            console.log("Aplicando tema:", theme);
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
-            } else {
-                document.body.classList.remove('dark-mode');
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
-            }
-        }
-
-        const savedTheme = localStorage.getItem('theme');
-        console.log("Tema guardado en localStorage:", savedTheme);
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            applyTheme('dark');
-            console.log("Tema del sistema detectado: oscuro.");
-        } else {
-            applyTheme('light');
-            console.log("Tema por defecto: claro.");
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            console.log("Clic en botón de tema detectado.");
-            if (document.body.classList.contains('dark-mode')) {
-                applyTheme('light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                applyTheme('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-
-        // --- Lógica del Desplazamiento Suave ---
-        const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-        const heroOrderButton = document.getElementById('hero-order-button');
-        const stickyOrderButton = document.getElementById('sticky-order-button');
-
-        function smoothScroll(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            console.log("Desplazamiento suave a:", targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                if (window.innerWidth <= 768 && this.closest('#sidebar')) {
-                    console.log("Cerrando sidebar después de desplazamiento suave.");
-                    closeSidebar();
+            // Función para registrar una visita
+            async function recordVisit() {
+                try {
+                    const visitsCollectionRef = collection(db, `artifacts/${appId}/public/data/visits`);
+                    await addDoc(visitsCollectionRef, {
+                        timestamp: serverTimestamp(),
+                        userId: userId 
+                    });
+                    console.log("Firebase: Visita registrada con éxito.");
+                } catch (e) {
+                    console.error("Firebase: Error al añadir documento de visita: ", e);
                 }
             }
-        }
 
-        smoothScrollLinks.forEach(link => {
-            link.addEventListener('click', smoothScroll);
-        });
+            // --- Lógica del Desplazamiento Suave ---
+            const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+            const heroOrderButton = document.getElementById('hero-order-button');
+            const stickyOrderButton = document.getElementById('sticky-order-button');
 
-        if (heroOrderButton) {
-            heroOrderButton.addEventListener('click', smoothScroll);
-        }
-        if (stickyOrderButton) {
-            stickyOrderButton.addEventListener('click', smoothScroll);
-        }
+            function smoothScroll(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                console.log("Desplazamiento suave a:", targetId);
 
-        window.addEventListener('scroll', () => {
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            smoothScrollLinks.forEach(link => {
+                link.addEventListener('click', smoothScroll);
+            });
+
+            if (heroOrderButton) {
+                heroOrderButton.addEventListener('click', smoothScroll);
+            }
+            if (stickyOrderButton) {
+                stickyOrderButton.addEventListener('click', smoothScroll);
+            }
+
+            window.addEventListener('scroll', () => {
+                if (heroOrderButton) {
+                    const rect = heroOrderButton.getBoundingClientRect();
+                    // El botón flotante se muestra si el botón del hero ya no está visible en la pantalla
+                    if (rect.bottom < 0) {
+                        stickyOrderButton.style.display = 'block'; // Asegura que se muestre
+                    } else {
+                        stickyOrderButton.style.display = 'none'; // Asegura que se oculte
+                    }
+                } else {
+                    stickyOrderButton.style.display = 'none'; // Fallback if hero button doesn't exist
+                }
+            });
+
+            // Asegurarse de que el botón flotante empiece oculto si la página se carga desplazada
+            // o si el botón del hero no está visible inicialmente.
             if (heroOrderButton) {
                 const rect = heroOrderButton.getBoundingClientRect();
                 if (rect.bottom < 0) {
-                    stickyOrderButton.classList.remove('hidden-float-button');
+                    stickyOrderButton.style.display = 'block';
                 } else {
-                    stickyOrderButton.classList.add('hidden-float-button');
+                    stickyOrderButton.style.display = 'none';
                 }
+            } else {
+                // Si por alguna razón el botón del hero no existe, ocultar el flotante por defecto
+                stickyOrderButton.style.display = 'none';
             }
-        });
 
-        // --- Lógica de Giro de Botones de Apps de Delivery ---
-        const flipperContainers = document.querySelectorAll('.flipper-container');
-        let currentFlippedCard = null;
-        let flipTimeout = null;
-
-        function clearFlipTimeout() {
-            if (flipTimeout) {
-                clearTimeout(flipTimeout);
-                flipTimeout = null;
-                console.log("Flip timeout cleared.");
-            }
-        }
-
-        function autoFlipBack() {
-            if (currentFlippedCard) {
-                currentFlippedCard.classList.remove('flipped');
-                currentFlippedCard = null;
-                console.log("Tarjeta volteada automáticamente hacia atrás.");
-            }
-            clearFlipTimeout();
-        }
-
-        flipperContainers.forEach(container => {
-            container.addEventListener('click', (event) => {
-                console.log("Clic en contenedor flipper detectado.");
-                const clickedElement = event.target;
-                const isNavLink = clickedElement.closest('a');
-
-                if (isNavLink) {
-                    console.log("Clic en enlace dentro de flipper, no girando.");
-                    clearFlipTimeout();
-                    autoFlipBack();
-                    return;
-                }
-
-                if (clickedElement.closest('.flipper-front') || clickedElement === container || clickedElement.closest('.flipper-inner')) {
-                    clearFlipTimeout();
-
-                    if (currentFlipperCard && currentFlippedCard !== container) {
-                        currentFlippedCard.classList.remove('flipped');
-                        console.log("Desvolteando tarjeta anterior.");
-                    }
-                    
-                    container.classList.toggle('flipped');
-                    console.log("Estado de flipper:", container.classList.contains('flipped') ? 'flipped' : 'unflipped');
-
-
-                    if (container.classList.contains('flipped')) {
-                        currentFlippedCard = container;
-                        flipTimeout = setTimeout(autoFlipBack, 5000);
-                        console.log("Tarjeta volteada. Auto-volteo programado en 5s.");
-                    } else {
-                        currentFlippedCard = null;
-                        console.log("Tarjeta desvolteada.");
-                    }
-                }
-            });
-        });
-
-        document.addEventListener('click', (event) => {
-            const clickedElement = event.target;
-            const isInsideFlipper = clickedElement.closest('.flipper-container');
-            const isNavOrHeroButton = clickedElement.closest('nav a, #hero-order-button, #sticky-order-button, #theme-toggle');
-
-            if (!isInsideFlipper && !isNavOrHeroButton && currentFlippedCard) {
-                console.log("Clic fuera de flipper/botones, auto-volteo.");
-                autoFlipBack();
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            if (currentFlippedCard) {
-                console.log("Scroll detectado, auto-volteo de flipper.");
-                autoFlipBack();
-            }
-        });
-
-        // --- Lógica de Sidebar ---
-        const menuToggleButton = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const closeSidebarButton = document.getElementById('close-sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-        function openSidebar() {
-            console.log("Abriendo sidebar.");
-            sidebar.classList.add('open');
-            sidebarOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSidebar() {
-            console.log("Cerrando sidebar.");
-            sidebar.classList.remove('open');
-            sidebarOverlay.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        if (menuToggleButton) {
-            menuToggleButton.addEventListener('click', openSidebar);
-            console.log("Listener para menu-toggle button añadido.");
-        } else {
-            console.warn("menu-toggle button no encontrado.");
-        }
-        if (closeSidebarButton) {
-            closeSidebarButton.addEventListener('click', closeSidebar);
-            console.log("Listener para close-sidebar button añadido.");
-        } else {
-            console.warn("close-sidebar button no encontrado.");
-        }
-        if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', closeSidebar);
-            console.log("Listener para sidebar-overlay añadido.");
-        } else {
-            console.warn("sidebar-overlay no encontrado.");
-        }
-
-
-        // Lógica para submenús
-        const menuToggleParent = document.querySelector('.menu-toggle-parent');
-        const submenuMenu = document.getElementById('submenu-menu');
-
-        if (menuToggleParent && submenuMenu) {
-            menuToggleParent.addEventListener('click', () => {
-                console.log("Clic en menú padre detectado.");
-                submenuMenu.classList.toggle('open');
-                menuToggleParent.classList.toggle('expanded');
-                console.log("Estado de submenú (open):", submenuMenu.classList.contains('open'));
-            });
-        } else {
-            console.warn("Elementos de submenú (menu-toggle-parent o submenu-menu) no encontrados.");
-        }
+            // La lógica del modal de WhatsApp ha sido eliminada de aquí.
+        }); // Fin de DOMContentLoaded
     </script>
 </body>
 </html>
