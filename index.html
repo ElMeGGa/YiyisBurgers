@@ -163,45 +163,68 @@
             border-radius: 0.25rem;
         }
 
-
-        /* Estilos para los botones de App Store y Google Play */
-        .app-download-button {
-            display: flex; /* Usar flexbox para centrar la imagen */
-            flex-direction: column; /* Apilar elementos verticalmente */
-            align-items: center; /* Centrar horizontalmente */
-            justify-content: center; /* Centrar verticalmente */
-            width: 80%; /* Ancho de los botones dentro del grupo */
-            margin-top: 0.5rem; /* Espacio entre botones */
+        /* Contenedor para cada fila de botón y texto */
+        .app-download-row {
+            display: flex;
+            align-items: center; /* Alinea verticalmente los elementos en el centro */
+            width: 95%; /* Ocupa casi todo el ancho disponible en la tarjeta */
+            margin-top: 0.5rem; /* Espacio entre cada fila de descarga */
+            background-color: rgba(0, 0, 0, 0.2); /* Fondo sutil para agrupar */
+            border-radius: 0.5rem; /* Bordes redondeados */
+            padding: 0.5rem; /* Espaciado interno */
             transition: transform 0.2s ease-in-out;
-            height: auto; /* Permitir que la altura se ajuste al contenido */
-            padding: 0.5rem 0; /* Añadir un poco de padding al botón mismo */
+            color: white; /* Asegura que el texto sea blanco */
+            min-height: 80px; /* Give it a min-height to ensure consistent row height */
+            text-decoration: none; /* Remove underline from the entire row acting as a link */
         }
-        .app-download-button:hover {
-            transform: scale(1.05);
-        }
-        .app-download-button img {
-            max-width: 100%; /* Asegura que la imagen no se desborde del botón */
-            height: auto; /* Mantiene la relación de aspecto */
-            object-fit: contain; /* Asegura que la imagen quepa sin recortarse */
+        .app-download-row:hover {
+            transform: scale(1.03);
+            background-color: rgba(0, 0, 0, 0.3); /* Más oscuro al pasar el ratón */
         }
 
-        /* Ajustes de tamaño específicos para cada tipo de insignia para lograr armonía visual */
-        .app-store-badge {
-            max-height: 40px; /* Reducir la altura máxima para que se vea más pequeña */
-            width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
+        .app-download-row .badge-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centra el badge dentro de su espacio */
+            width: 40%; /* 40% del ancho del contenedor de la fila para el badge */
+            flex-shrink: 0; /* Evita que el badge se encoja */
         }
 
-        .google-play-badge {
-            max-height: 55px; /* Aumentar la altura máxima para que se vea más grande */
-            width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
+        .app-download-text-group {
+            width: 60%; /* 60% del ancho del contenedor de la fila para el texto */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Centra el texto horizontalmente */
+            padding-left: 0.5rem; /* Small padding */
         }
 
+        .app-download-text-group p {
+            margin: 0; /* Remove default paragraph margins */
+            font-size: 0.875rem; /* Consistent font size */
+            line-height: 1.2;
+            text-align: center; /* Ensure text is centered within its group */
+        }
+
+        /* Estilos para las imágenes de los badges */
+        .app-store-badge, .google-play-badge {
+            width: auto;
+            object-fit: contain;
+            /* Uniform size for both badges */
+            height: 55px; /* Set a fixed height for both to be consistent */
+            max-width: 100%; /* Ensure they don't overflow */
+        }
+        
         /* Review card styles */
         .review-card {
             border-radius: 0.5rem;
             box-shadow: var(--color-shadow-md);
             padding: 1.5rem;
             background-color: var(--color-bg-secondary); /* Asegura que la tarjeta de reseña tenga el fondo suave */
+        }
+        /* FIX: Ensure paragraph text in review cards uses the primary text color */
+        .review-card p {
+            color: var(--color-text-primary) !important; 
         }
         .star-rating svg {
             color: #fcd34d; /* Amarillo para las estrellas */
@@ -229,6 +252,19 @@
             header nav a {
                 padding: 0.5rem 0.75rem;
                 font-size: 0.875rem;
+            }
+            .app-download-row {
+                flex-direction: column; /* Apila el badge y el texto en móvil */
+                align-items: center;
+                text-align: center;
+            }
+            .app-download-row .badge-container {
+                width: 100%; /* Badge takes full width */
+            }
+            .app-download-text-group {
+                width: 100%; /* Text group takes full width */
+                margin-top: 0.5rem; /* Space between badge and text group */
+                padding-left: 0; /* Remove padding */
             }
         }
     </style>
@@ -281,12 +317,26 @@
                         <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/rappilogo_yxnazg.jpg" alt="Logo de Rappi" class="h-12 w-auto">
                         <span>Disponible en Rappi</span>
                     </div>
-                    <a href="https://apps.apple.com/co/app/rappi-pide-todo-en-minutos/id984044296" target="_blank" class="app-download-button">
-                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.grability.rappi" target="_blank" class="app-download-button">
-                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
-                    </a>
+                    <div class="w-full flex flex-col items-center mt-4">
+                        <a href="https://apps.apple.com/co/app/rappi-pide-todo-en-minutos/id984044296" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para iOS</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.grability.rappi" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para Android</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Uber Eats Group -->
@@ -295,12 +345,26 @@
                         <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316426/ubereatsloco_j6jmlj.jpg" alt="Logo de Uber Eats" class="h-12 w-auto">
                         <span>Disponible en Uber Eats</span>
                     </div>
-                    <a href="https://apps.apple.com/us/app/uber-eats-food-groceries/id1058959277" target="_blank" class="app-download-button">
-                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.ubercab.eats" target="_blank" class="app-download-button">
-                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
-                    </a>
+                    <div class="w-full flex flex-col items-center mt-4">
+                        <a href="https://apps.apple.com/us/app/uber-eats-food-groceries/id1058959277" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para iOS</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.ubercab.eats" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para Android</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- DiDi Food Group -->
@@ -309,12 +373,26 @@
                         <img src="https://res.cloudinary.com/dmlwzkvnq/image/upload/v1750316427/didifoodlogo_nb9rqo.jpg" alt="Logo de DiDi Food" class="h-12 w-auto">
                         <span>Disponible en DiDi Food</span>
                     </div>
-                    <a href="https://apps.apple.com/cn/app/didi-food-food-delivery/id1434256853" target="_blank" class="app-download-button">
-                        <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.didi.food.customer" target="_blank" class="app-download-button">
-                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
-                    </a>
+                    <div class="w-full flex flex-col items-center mt-4">
+                        <a href="https://apps.apple.com/cn/app/didi-food-food-delivery/id1434256853" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Descargar en App Store">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para iOS</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.didi.food.customer" target="_blank" class="app-download-row">
+                            <div class="badge-container">
+                                <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                            </div>
+                            <div class="app-download-text-group">
+                                <p>Descarga la app para Android</p>
+                                <p class="font-bold">y ordena ahora.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- WhatsApp Group (modificado para banner estático) -->
